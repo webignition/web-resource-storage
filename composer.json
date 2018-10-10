@@ -31,8 +31,8 @@
     },
     "require": {
         "php": ">=7.2.0",
-        "webignition/web-resource-interfaces":">=0.11,<1",
-        "webignition/internet-media-type-interface":"^0.1"
+        "webignition/web-resource-interfaces":"^3",
+        "webignition/internet-media-type-interface":"^0.4"
     },
     "require-dev": {
         "phpunit/phpunit": "^7",
