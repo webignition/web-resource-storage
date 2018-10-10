@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "1a451b846bb859165a89e85bf8e126fc",
+    "content-hash": "5dbb1b03730a250fafe519bd6c44fe39",
     "packages": [
         {
             "name": "psr/http-message",
@@ -58,20 +58,20 @@
         },
         {
             "name": "webignition/internet-media-type-interface",
-            "version": "0.1",
+            "version": "0.4",
             "source": {
                 "type": "git",
                 "url": "https://github.com/webignition/internet-media-type-interface.git",
-                "reference": "db57dba3b4dacb78c24cb2a4a88768be47794726"
+                "reference": "dde668e8fa9e0c49b9925a4eeadfa0bc65b26747"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/webignition/internet-media-type-interface/zipball/db57dba3b4dacb78c24cb2a4a88768be47794726",
-                "reference": "db57dba3b4dacb78c24cb2a4a88768be47794726",
+                "url": "https://api.github.com/repos/webignition/internet-media-type-interface/zipball/dde668e8fa9e0c49b9925a4eeadfa0bc65b26747",
+                "reference": "dde668e8fa9e0c49b9925a4eeadfa0bc65b26747",
                 "shasum": ""
             },
             "require": {
-                "php": ">=5.6.0"
+                "php": ">=7.2.0"
             },
             "type": "library",
             "autoload": {
@@ -98,26 +98,29 @@
                 "media type",
                 "media-type"
             ],
-            "time": "2018-03-21T10:55:33+00:00"
+            "time": "2018-10-09T09:16:21+00:00"
         },
         {
             "name": "webignition/web-resource-interfaces",
-            "version": "0.11",
+            "version": "3.3",
             "source": {
                 "type": "git",
                 "url": "https://github.com/webignition/web-resource-interfaces.git",
-                "reference": "7e734ccbfde87ba7dd1b4b0ab3b1a5ad77cf5e3a"
+                "reference": "0c6a2cb21c094af9f2ff9566bb125bafd00f54aa"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/webignition/web-resource-interfaces/zipball/7e734ccbfde87ba7dd1b4b0ab3b1a5ad77cf5e3a",
-                "reference": "7e734ccbfde87ba7dd1b4b0ab3b1a5ad77cf5e3a",
+                "url": "https://api.github.com/repos/webignition/web-resource-interfaces/zipball/0c6a2cb21c094af9f2ff9566bb125bafd00f54aa",
+                "reference": "0c6a2cb21c094af9f2ff9566bb125bafd00f54aa",
                 "shasum": ""
             },
             "require": {
-                "php": ">=5.6.0",
+                "php": ">=7.2.0",
                 "psr/http-message": "~1.0",
                 "webignition/internet-media-type-interface": ">=0.1,<1"
+            },
+            "require-dev": {
+                "squizlabs/php_codesniffer": "^3"
             },
             "type": "library",
             "autoload": {
@@ -144,7 +147,7 @@
                 "psr-7",
                 "web-page"
             ],
-            "time": "2018-03-29T17:08:09+00:00"
+            "time": "2018-10-08T16:22:49+00:00"
         }
     ],
     "packages-dev": [
