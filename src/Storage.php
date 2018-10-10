@@ -2,7 +2,6 @@
 
 namespace webignition\WebResource;
 
-use Symfony\Component\Cache\Simple\FilesystemCache;
 use webignition\WebResourceInterfaces\WebResourceInterface;
 
 class Storage
@@ -21,12 +20,7 @@ class Storage
      */
     private $paths = [];
 
-    /**
-     * @param WebResourceInterface $resource
-     *
-     * @return string
-     */
-    public function store(WebResourceInterface $resource)
+    public function store(WebResourceInterface $resource): string
     {
         $path = $this->createPath($resource);
         $localPathHash = $this->createLocalPathHash($path);
@@ -39,12 +33,7 @@ class Storage
         return $path;
     }
 
-    /**
-     * @param string $path
-     *
-     * @return string|null
-     */
-    public function getUrlFromPath($path)
+    public function getUrlFromPath(string $path): string
     {
         $pathHash = $this->createLocalPathHash($path);
 
@@ -53,22 +42,12 @@ class Storage
             : null;
     }
 
-    /**
-     * @param string $path
-     *
-     * @return string
-     */
-    private function createLocalPathHash($path)
+    private function createLocalPathHash(string $path): string
     {
         return md5($path);
     }
 
-    /**
-     * @param WebResourceInterface $webResource
-     *
-     * @return string
-     */
-    private function createPath(WebResourceInterface $webResource)
+    private function createPath(WebResourceInterface $webResource): string
     {
         return sys_get_temp_dir()
             . '/'

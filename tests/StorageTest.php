@@ -2,14 +2,13 @@
 
 namespace webignition\Tests\WebResource;
 
-use Mockery\Mock;
 use Psr\Http\Message\UriInterface;
 use webignition\InternetMediaTypeInterface\InternetMediaTypeInterface;
 use webignition\WebResource\Storage;
 use webignition\WebResourceInterfaces\WebPageInterface;
 use webignition\WebResourceInterfaces\WebResourceInterface;
 
-class StorageTest extends \PHPUnit_Framework_TestCase
+class StorageTest extends \PHPUnit\Framework\TestCase
 {
     const HTML_CONTENT = '<doctype html><html></html>';
     const CSS_CONTENT = '.foo {}';
@@ -37,8 +36,11 @@ class StorageTest extends \PHPUnit_Framework_TestCase
      * @param string $expectedPathExtension
      * @param string $expectedStoredContent
      */
-    public function testStore(WebResourceInterface $webResource, $expectedPathExtension, $expectedStoredContent)
-    {
+    public function testStore(
+        WebResourceInterface $webResource,
+        string $expectedPathExtension,
+        string $expectedStoredContent
+    ) {
         $path = $this->storage->store($webResource);
         $this->assertRegExp('/\/tmp\/[a-z0-9]{32}\.[a-z]{2,4}/', $path);
         $this->assertFileExists($path);
@@ -50,10 +52,7 @@ class StorageTest extends \PHPUnit_Framework_TestCase
         $this->assertEquals($expectedStoredContent, $storedContents);
     }
 
-    /**
-     * @return array
-     */
-    public function storeDataProvider()
+    public function storeDataProvider(): array
     {
         return [
             'web page' => [
@@ -113,6 +112,7 @@ class StorageTest extends \PHPUnit_Framework_TestCase
             self::HTML_CONTENT
         );
 
+        /* @var WebResourceInterface $cssResource */
         $cssResource = $this->createWebResource(
             $this->createUri($cssResourceUrl),
             $this->createInternetMediaType('css'),
@@ -133,6 +133,7 @@ class StorageTest extends \PHPUnit_Framework_TestCase
             self::HTML_CONTENT
         );
 
+        /* @var WebResourceInterface $cssResource */
         $cssResource = $this->createWebResource(
             $this->createUri('http://example.com/style.css'),
             $this->createInternetMediaType('css'),
@@ -151,24 +152,27 @@ class StorageTest extends \PHPUnit_Framework_TestCase
         $this->assertFileNotExists($cssResourcePath);
     }
 
-    /**
-     * @param UriInterface $uri
-     * @param string $content
-     *
-     * @return Mock|WebPageInterface
-     */
-    private function createWebPage(UriInterface $uri, $content)
+    private function createWebPage(UriInterface $uri, string $content): WebPageInterface
     {
-        /* @var WebPageInterface|Mock $webPage */
-        $webPage = $this->createWebResource($uri, $this->createInternetMediaType('html'), $content);
+        $webPage = $this->createWebResource(
+            $uri,
+            $this->createInternetMediaType('html'),
+            $content,
+            WebPageInterface::class
+        );
 
         return $webPage;
     }
 
-    private function createWebResource(UriInterface $uri, InternetMediaTypeInterface $internetMediaType, $content)
-    {
-        /* @var WebResourceInterface|Mock $webResource */
-        $webResource = \Mockery::mock(WebResourceInterface::class);
+    private function createWebResource(
+        UriInterface $uri,
+        InternetMediaTypeInterface $internetMediaType,
+        string $content,
+        ?string $resourceClassName = null
+    ) {
+        $resourceClassName = $resourceClassName ?? WebResourceInterface::class;
+
+        $webResource = \Mockery::mock($resourceClassName);
 
         $webResource
             ->shouldReceive('getUri')
@@ -185,14 +189,8 @@ class StorageTest extends \PHPUnit_Framework_TestCase
         return $webResource;
     }
 
-    /**
-     * @param string $subType
-     *
-     * @return Mock|InternetMediaTypeInterface
-     */
-    private function createInternetMediaType($subType)
+    private function createInternetMediaType(string $subType): InternetMediaTypeInterface
     {
-        /* @var InternetMediaTypeInterface|Mock $internetMediaType */
         $internetMediaType = \Mockery::mock(InternetMediaTypeInterface::class);
 
         $internetMediaType
@@ -202,14 +200,8 @@ class StorageTest extends \PHPUnit_Framework_TestCase
         return $internetMediaType;
     }
 
-    /**
-     * @param string $uriString
-     *
-     * @return Mock|UriInterface
-     */
-    private function createUri($uriString)
+    private function createUri(string $uriString): UriInterface
     {
-        /* @var UriInterface|Mock $uri */
         $uri = \Mockery::mock(UriInterface::class);
 
         $uri

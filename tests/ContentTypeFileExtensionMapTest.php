@@ -6,7 +6,7 @@ use Mockery\Mock;
 use webignition\InternetMediaTypeInterface\InternetMediaTypeInterface;
 use webignition\WebResource\ContentTypeFileExtensionMap;
 
-class ContentTypeFileExtensionMapTest extends \PHPUnit_Framework_TestCase
+class ContentTypeFileExtensionMapTest extends \PHPUnit\Framework\TestCase
 {
     /**
      * @dataProvider getFileExtensionDataProvider
@@ -14,15 +14,12 @@ class ContentTypeFileExtensionMapTest extends \PHPUnit_Framework_TestCase
      * @param InternetMediaTypeInterface $internetMediaType
      * @param string $expectedFileExtension
      */
-    public function testGetFileExtension(InternetMediaTypeInterface $internetMediaType, $expectedFileExtension)
+    public function testGetFileExtension(InternetMediaTypeInterface $internetMediaType, string $expectedFileExtension)
     {
         $this->assertEquals($expectedFileExtension, ContentTypeFileExtensionMap::getFileExtension($internetMediaType));
     }
 
-    /**
-     * @return array
-     */
-    public function getFileExtensionDataProvider()
+    public function getFileExtensionDataProvider(): array
     {
         return [
             'text/html' => [
@@ -44,12 +41,7 @@ class ContentTypeFileExtensionMapTest extends \PHPUnit_Framework_TestCase
         ];
     }
 
-    /**
-     * @param string $subtype
-     *
-     * @return Mock|InternetMediaTypeInterface
-     */
-    private function createInternetMediaType($subtype)
+    private function createInternetMediaType(string $subtype): InternetMediaTypeInterface
     {
         /* @var InternetMediaTypeInterface|Mock $internetMediaType */
         $internetMediaType = \Mockery::mock(InternetMediaTypeInterface::class);

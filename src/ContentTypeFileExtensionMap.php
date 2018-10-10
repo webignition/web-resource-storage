@@ -14,12 +14,7 @@ class ContentTypeFileExtensionMap
         'x-javascript' => 'js',
     ];
 
-    /**
-     * @param InternetMediaTypeInterface $contentType
-     *
-     * @return string
-     */
-    public static function getFileExtension(InternetMediaTypeInterface $contentType)
+    public static function getFileExtension(InternetMediaTypeInterface $contentType): string
     {
         $mediaSubType = $contentType->getSubtype();
 
