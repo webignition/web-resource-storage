@@ -6,7 +6,7 @@ use Mockery\Mock;
 use webignition\InternetMediaTypeInterface\InternetMediaTypeInterface;
 use webignition\WebResource\ContentTypeFileExtensionMap;
 
-class ContentTypeFileExtensionMapTest extends \PHPUnit_Framework_TestCase
+class ContentTypeFileExtensionMapTest extends \PHPUnit\Framework\TestCase
 {
     /**
      * @dataProvider getFileExtensionDataProvider

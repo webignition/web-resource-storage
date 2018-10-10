@@ -9,7 +9,7 @@ use webignition\WebResource\Storage;
 use webignition\WebResourceInterfaces\WebPageInterface;
 use webignition\WebResourceInterfaces\WebResourceInterface;
 
-class StorageTest extends \PHPUnit_Framework_TestCase
+class StorageTest extends \PHPUnit\Framework\TestCase
 {
     const HTML_CONTENT = '<doctype html><html></html>';
     const CSS_CONTENT = '.foo {}';
