@@ -33,7 +33,7 @@ class Storage
         return $path;
     }
 
-    public function getUrlFromPath(string $path): string
+    public function getUrlFromPath(string $path): ?string
     {
         $pathHash = $this->createLocalPathHash($path);
 

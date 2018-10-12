@@ -124,6 +124,7 @@ class StorageTest extends \PHPUnit\Framework\TestCase
 
         $this->assertEquals($webPageUrl, $this->storage->getUrlFromPath($webPagePath));
         $this->assertEquals($cssResourceUrl, $this->storage->getUrlFromPath($cssResourcePath));
+        $this->assertNull($this->storage->getUrlFromPath('foo'));
     }
 
     public function testReset()
